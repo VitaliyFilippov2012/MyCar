@@ -2,12 +2,56 @@ package filippov.vitaliy.poibms3_8.Data.Events;
 
 import java.util.Date;
 
-public abstract class Event {
+public class Event {
     String nameEvent;
     float cost;
     long mileage;
     String comment;
     String dateEvent;
+    String typeFuel;
+    int volume;
+    String typeDetail;
+    float costDetail;
+    int typeEvent;
+
+    public Event(String nameEvent, long mileage, String dateEvent, int typeEvent) {
+        this.nameEvent = nameEvent;
+        this.mileage = mileage;
+        this.dateEvent = dateEvent;
+        this.typeEvent = typeEvent;
+    }
+
+    public String getTypeDetail() {
+        return typeDetail;
+    }
+
+    public void setTypeDetail(String typeDetail) {
+        this.typeDetail = typeDetail;
+    }
+
+    public float getCostDetail() {
+        return costDetail;
+    }
+
+    public void setCostDetail(float costDetail) {
+        this.costDetail = costDetail;
+    }
+
+    public String getTypeFuel() {
+        return typeFuel;
+    }
+
+    public void setTypeFuel(String typeFuel) {
+        this.typeFuel = typeFuel;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
 
     public String getNameEvent() {
         return nameEvent;
@@ -25,8 +69,8 @@ public abstract class Event {
         this.cost = cost;
     }
 
-    public long getMileage() {
-        return mileage;
+    public String getMileage() {
+        return String.valueOf(mileage);
     }
 
     public void setMileage(long mileage) {
@@ -47,5 +91,13 @@ public abstract class Event {
 
     public void setDateEvent(String dateEvent) {
         this.dateEvent = dateEvent;
+    }
+
+    public int getTypeEvent() {
+        return typeEvent;
+    }
+
+    public void setTypeEvent(int typeEvent) {
+        this.typeEvent = typeEvent;
     }
 }

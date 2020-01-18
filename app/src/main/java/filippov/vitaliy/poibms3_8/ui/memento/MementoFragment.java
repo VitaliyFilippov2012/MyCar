@@ -22,13 +22,6 @@ public class MementoFragment extends Fragment {
         mementoViewModel =
                 ViewModelProviders.of(this).get(MementoViewModel.class);
         View root = inflater.inflate(R.layout.fragment_memento, container, false);
-        final TextView textView = root.findViewById(R.id.text);
-        mementoViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }
