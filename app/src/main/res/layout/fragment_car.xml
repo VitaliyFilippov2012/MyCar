@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ui.fuel.FuelFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.car.CarFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <!--    Fuel-->
+        <!--    Mark and Model-->
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="0dp"
@@ -28,16 +28,32 @@
                 android:layout_marginVertical="10dp"
                 android:contentDescription="@string/enter_date"
                 android:padding="5dp"
-                app:srcCompat="@drawable/ic_local_gas_station_black_24dp" />
+                app:srcCompat="@drawable/ic_directions_car_black_24dp" />
 
             <EditText
-                android:id="@+id/type_fuel"
-                android:layout_width="match_parent"
+                android:id="@+id/mark"
+                android:layout_width="150dp"
                 android:layout_height="35dp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints="200dp"
-                android:hint="Type Fuel"
+                android:hint="@string/mark"
+                android:inputType="text"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:typeface="normal" />
+
+            <EditText
+                android:id="@+id/model"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/model"
                 android:inputType="text"
                 android:padding="5dp"
                 android:text=""
@@ -46,7 +62,7 @@
                 android:textStyle="normal"
                 android:typeface="normal" />
         </LinearLayout>
-        <!--Количество и стоимость-->
+        <!--Год выпуска-->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
@@ -64,16 +80,16 @@
                 android:layout_marginVertical="10dp"
                 android:contentDescription="@string/enter_date"
                 android:padding="5dp"
-                app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
+                app:srcCompat="@drawable/ic_event_note_black_24dp" />
 
             <EditText
-                android:id="@+id/volume_fuel"
-                android:layout_width="150dp"
+                android:id="@+id/year_issue"
+                android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginVertical="10dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints="200dp"
-                android:hint="@string/quantity"
+                android:hint="@string/year_of_issue"
                 android:inputType="number"
                 android:padding="5dp"
                 android:text=""
@@ -81,34 +97,8 @@
                 android:textSize="18sp"
                 android:textStyle="normal"
                 android:typeface="normal" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginVertical="10dp"
-                android:contentDescription="@string/enter_date"
-                android:padding="5dp"
-                android:paddingEnd="0dp"
-                app:srcCompat="@drawable/ic_attach_money_black_24dp" />
-
-            <EditText
-                android:id="@+id/cost_fuel"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginEnd="10dp"
-                android:autofillHints="200dp"
-                android:hint="@string/cost"
-                android:inputType="number|numberDecimal"
-                android:padding="5dp"
-                android:text=""
-                android:textAlignment="viewStart"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                android:typeface="normal" />
         </LinearLayout>
-        <!--    Пробег-->
+        <!--    Тип двигателя-->
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="0dp"
@@ -118,6 +108,78 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                android:contentDescription="@string/enter_date"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_local_gas_station_black_24dp" />
+
+            <EditText
+                android:id="@+id/type_engine"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/type_engine"
+                android:inputType="text"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:typeface="normal" />
+        </LinearLayout>
+        <!--   Тип трансмисси-->
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                android:contentDescription="@string/enter_date"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_fitness_center_black_24dp" />
+
+            <EditText
+                android:id="@+id/type_transmission"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/type_transmission"
+                android:inputType="text"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:typeface="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -144,16 +206,52 @@
                 android:textStyle="normal"
                 android:typeface="normal" />
         </LinearLayout>
-        <!--    Comment-->
+<!--        VIN-->
         <LinearLayout
-            android:id="@+id/linearLayout4"
+            android:id="@+id/linearLayout6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                android:contentDescription="@string/enter_date"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_perm_identity_black_24dp" />
+
+            <EditText
+                android:id="@+id/vin"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/vin"
+                android:inputType="number"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:typeface="normal" />
+        </LinearLayout>
+        <!--    Comment-->
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -181,14 +279,6 @@
                 android:typeface="normal" />
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/date_fragment"
-            android:name="filippov.vitaliy.poibms3_8.ui.date.DateFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
         <!--    Кнопки-->
         <LinearLayout
             android:layout_width="wrap_content"
@@ -197,23 +287,23 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_fragment">
+            app:layout_constraintTop_toBottomOf="@id/linearLayout7">
 
             <Button
-                android:id="@+id/clear"
+                android:id="@+id/delete"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/clear" />
+                android:text="@string/delete" />
 
             <Button
-                android:id="@+id/ok"
+                android:id="@+id/save"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
-                android:text="@string/ok" />
+                android:text="@string/save" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

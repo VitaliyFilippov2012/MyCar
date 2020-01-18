@@ -1,9 +1,8 @@
-package filippov.vitaliy.poibms3_8.ui;
+package filippov.vitaliy.poibms3_8.ui.date;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,11 +53,6 @@ public class DateFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.context = context;
-        try {
-            mListener = (OnFragmentInteractionListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString());
-        }
     }
 
     private void setDate(View v) {

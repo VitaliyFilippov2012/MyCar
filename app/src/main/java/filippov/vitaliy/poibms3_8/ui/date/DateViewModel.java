@@ -1,7 +1,4 @@
-package filippov.vitaliy.poibms3_8.ui;
-
-import android.text.format.DateUtils;
-import android.widget.EditText;
+package filippov.vitaliy.poibms3_8.ui.date;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -18,14 +15,14 @@ public class DateViewModel extends ViewModel {
     public DateViewModel() {
         mText = new MutableLiveData<>();
         Date date = new Date();
-        setText(date.getTime());
+        this.setText(date.getTime());
     }
 
     public LiveData<String> getText() {
         return mText;
     }
 
-    private String ConvertDateToString(long dateAndTime){
+    public String ConvertDateToString(long dateAndTime){
         return dateFormat.format(dateAndTime);
     }
 

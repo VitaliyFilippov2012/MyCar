@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.DateFragment">
+    tools:context=".ui.date.DateFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/date_text"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginVertical="10dp"
             android:layout_marginEnd="10dp"
@@ -32,7 +32,7 @@
             android:text=""
             android:textAlignment="viewStart"
             android:textSize="18sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
             android:typeface="normal" />
     </LinearLayout>
 

@@ -3,24 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_cars">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_cars"
         android:name="filippov.vitaliy.poibms3_8.ui.home.HomeFragment"
         android:label="@string/menu_myCars"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="filippov.vitaliy.poibms3_8.ui.gallery.GalleryFragment"
-        android:label="@string/menu_notes"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_fuels"
+        android:name="filippov.vitaliy.poibms3_8.ui.fuel.FuelFragment"
+        android:label="@string/fuels_list"
+        tools:layout="@layout/fragment_fuel" />
 
     <fragment
-        android:id="@+id/nav_tools"
+        android:id="@+id/nav_services"
         android:name="filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
+        android:label="@string/services_list"
         tools:layout="@layout/fragment_tools" />
 
+    <fragment
+        android:id="@+id/nav_events"
+        android:name="filippov.vitaliy.poibms3_8.ui.memento.MementoFragment"
+        android:label="@string/services_list"
+        tools:layout="@layout/fragment_memento" />
 </navigation>

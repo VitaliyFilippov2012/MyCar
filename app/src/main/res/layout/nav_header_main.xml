@@ -25,11 +25,4 @@
         android:contentDescription="@string/app_name"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/colorLight"/>
-
-    <Spinner
-        android:id="@+id/spinner_cars"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:spinnerMode="dropdown" />
 </LinearLayout>

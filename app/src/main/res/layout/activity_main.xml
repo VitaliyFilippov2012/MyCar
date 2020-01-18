@@ -22,9 +22,4 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
-    <fragment
-        android:id="@+id/date_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="filippov.vitaliy.poibms3_8.ui.DateFragment"/>
 </androidx.drawerlayout.widget.DrawerLayout>

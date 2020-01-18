@@ -12,13 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity{
 
     private AppBarConfiguration mAppBarConfiguration;
-    private Spinner spinner_cars;
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,29 +23,16 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery,
-                R.id.nav_tools)
+                R.id.nav_cars, R.id.nav_fuels,
+                R.id.nav_services,R.id.nav_events)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        spinner_cars = findViewById(R.id.spinner_cars);
-        ArrayAdapter<?> adapter =
-                ArrayAdapter.createFromResource(this, R.array.spinner_cars, android.R.layout.simple_spinner_item);
-//        ArrayAdapter fromResource = ArrayAdapter.createFromResource(
-//                this,
-//                R.array.spinner_cars,
-//                R.id.spinner_row
-//        );
-        //spinner_cars.setAdapter(adapter);
     }
 
     @Override

@@ -1,16 +1,15 @@
-package filippov.vitaliy.poibms3_8.ui.slideshow;
+package filippov.vitaliy.poibms3_8.ui.car;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SlideshowViewModel extends ViewModel {
-
+public class CarViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
-    public SlideshowViewModel() {
+    public CarViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("This is Car fragment");
     }
 
     public LiveData<String> getText() {
