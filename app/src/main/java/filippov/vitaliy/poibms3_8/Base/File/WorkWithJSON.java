@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import filippov.vitaliy.poibms3_8.Base.Constants;
+
 public class WorkWithJSON<T>{
 
     private WorkWithFile wf;
@@ -31,14 +33,14 @@ public class WorkWithJSON<T>{
                 text.append(str);
                 text.append('\n');
             }
-            Log.d("MyEvent",String.valueOf(text));
+            Log.d(Constants.TAG,String.valueOf(text));
             String[] findStrings = String.valueOf(text).split("\n");
             ArrayList<T> findObj = new ArrayList<T>();
             String[] array = new String[2];
             for (String s: findStrings) {
                 if(!s.isEmpty()){
                     findObj.add((T)gson.fromJson(String.valueOf(s), type));
-                    Log.d("MyEvent","Вынули из файла: "+s);
+                    Log.d(Constants.TAG,"Вынули из файла: "+s);
                 }
 
             }
@@ -46,9 +48,9 @@ public class WorkWithJSON<T>{
             return findObj;
 
         } catch (FileNotFoundException e) {
-            Log.d("MyEvent", "Ошибка чтения из файла..");
+            Log.d(Constants.TAG, "Ошибка чтения из файла..");
         } catch (IOException e) {
-            Log.d("MyEvent", "Ошибка чтения из файла..");
+            Log.d(Constants.TAG, "Ошибка чтения из файла..");
         }
         return null;
     }
@@ -56,7 +58,7 @@ public class WorkWithJSON<T>{
     public boolean saveAsJson(T obj){
         Gson gson = new Gson();
         String json = gson.toJson(obj);
-        Log.d("MyEvent","Записали в файл: "+json);
+        Log.d(Constants.TAG,"Записали в файл: "+json);
         try{
             FileWriter fileWriter = new FileWriter(wf.file, true);
             fileWriter.append(json);
@@ -65,7 +67,7 @@ public class WorkWithJSON<T>{
             fileWriter.close();
             return true;
         } catch (IOException e) {
-            Log.d("MyEvent", "Ошибка записи в файл..");
+            Log.d(Constants.TAG, "Ошибка записи в файл..");
         }
         return false;
     }

@@ -26,6 +26,9 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import filippov.vitaliy.poibms3_8.Base.Constants;
+import filippov.vitaliy.poibms3_8.Data.Events.Event;
+
 public class WorkWithXML {
     private WorkWithFile wf;
 
@@ -43,16 +46,16 @@ public class WorkWithXML {
                 Element category = doc.createElement("Category");
                 category.setAttribute("Name", item);
 
-                for (Event e : events) {
-                    if (e.getCategory().equals(item)) {
-                        Element eventElement = doc.createElement("Event");
-                        eventElement.setAttribute("Name", e.getName());
-                        eventElement.setAttribute("Date", e.getDate());
-                        eventElement.setAttribute("Info", e.getInfo());
-                        category.appendChild(eventElement);
-                    }
-
-                }
+//                for (Event e : events) {
+//                    if (e.getCategory().equals(item)) {
+//                        Element eventElement = doc.createElement("Event");
+//                        eventElement.setAttribute("Name", e.getName());
+//                        eventElement.setAttribute("Date", e.getDate());
+//                        eventElement.setAttribute("Info", e.getInfo());
+//                        category.appendChild(eventElement);
+//                    }
+//
+//                }
 
                 categories.appendChild(category);
             }
@@ -61,7 +64,7 @@ public class WorkWithXML {
             return doc;
 
         } catch (ParserConfigurationException e) {
-            Log.d("MyEvent", e.getMessage());
+            Log.d(Constants.TAG, e.getMessage());
         }
         return null;
     }
@@ -71,16 +74,16 @@ public class WorkWithXML {
         for (int i = 0; i < elements.getLength(); i++) {
             Node categoryNode = elements.item(i);
             String category = categoryNode.getAttributes().getNamedItem("Name").getTextContent();
-            Category.addCategoryNames(category);
-
-            NodeList eventsList = categoryNode.getChildNodes();
-            for (int a = 0; a < eventsList.getLength(); a++) {
-                Node taskNode = eventsList.item(a);
-                Event task = new Event(taskNode.getAttributes().getNamedItem("Name").getTextContent(),
-                        taskNode.getAttributes().getNamedItem("Info").getTextContent(), taskNode.getAttributes().getNamedItem("Date").getTextContent(),
-                        category);
-                CalendarEvents.addEvent(task);
-            }
+//            Category.addCategoryNames(category);
+//
+//            NodeList eventsList = categoryNode.getChildNodes();
+//            for (int a = 0; a < eventsList.getLength(); a++) {
+//                Node taskNode = eventsList.item(a);
+//                Event task = new Event(taskNode.getAttributes().getNamedItem("Name").getTextContent(),
+//                        taskNode.getAttributes().getNamedItem("Info").getTextContent(), taskNode.getAttributes().getNamedItem("Date").getTextContent(),
+//                        category);
+//                CalendarEvents.addEvent(task);
+//            }
         }
     }
 
@@ -93,7 +96,7 @@ public class WorkWithXML {
             return writer.getBuffer().toString();
 
         } catch (TransformerException e) {
-            Log.d("MyEvent", e.getMessage());
+            Log.d(Constants.TAG, e.getMessage());
         }
 
         return "";
@@ -104,11 +107,11 @@ public class WorkWithXML {
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             return builder.parse(wf.file);
         } catch (ParserConfigurationException e) {
-            Log.d("Xml.parseFromFile", e.getMessage());
+            Log.d(Constants.TAG, e.getMessage());
         } catch (SAXException e) {
-            Log.d("Xml.parseFromFile", e.getMessage());
+            Log.d(Constants.TAG, e.getMessage());
         } catch (IOException e) {
-            Log.d("Xml.parseFromFile", e.getMessage());
+            Log.d(Constants.TAG, e.getMessage());
         }
         return null;
     }
@@ -131,7 +134,7 @@ public class WorkWithXML {
 
         XPathFactory xFactory = XPathFactory.newInstance();
         XPath xpath = xFactory.newXPath();
-        Log.d("MyEvent","1");
+        Log.d(Constants.TAG,"1");
 
         try {
             XPathExpression expression1 = xpath.compile("/Categories/Category[@Name='"+category+"']/Event/@Name");
@@ -147,7 +150,7 @@ public class WorkWithXML {
             return list;
 
         } catch (XPathExpressionException e) {
-            Log.d("MyEvent","2");
+            Log.d(Constants.TAG,"2");
 
             return null;
         }

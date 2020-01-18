@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import filippov.vitaliy.poibms3_8.Base.Constants;
+
 public class WorkWithFile{
     File file;
 
@@ -20,7 +22,7 @@ public class WorkWithFile{
                 deleteFile();
             }
             file.createNewFile();
-            Log.d("MyEvent", "Создали файл: " + file.getName());
+            Log.d(Constants.TAG, "Создали файл: " + file.getName());
         }
         catch (IOException e) {
             return false;
@@ -30,7 +32,7 @@ public class WorkWithFile{
 
     public boolean deleteFile() {
         file.delete();
-        Log.d("MyEvent","Удалили файл: "+file.getName());
+        Log.d(Constants.TAG,"Удалили файл: "+file.getName());
 
         return !checkFile();
     }
