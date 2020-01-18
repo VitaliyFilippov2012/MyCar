@@ -1,8 +1,10 @@
 package filippov.vitaliy.poibms3_8;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,16 +12,41 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
+import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
+import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
 
 
 public class RecycleFragment extends Fragment {
 
-    Event[] itemsData;
-
+    private ToolsFragment mListenerT;
+    private MementoFragment mListenerM;
+    private LiveData<Event[]> mData;
     public RecycleFragment() {
 
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Fragment fragment = getParentFragment();
+
+        try {
+            if(fragment instanceof ToolsFragment)
+            {
+                mListenerT = (ToolsFragment)fragment;
+                mData = mListenerT.getData();
+                return;
+            }
+            if(fragment instanceof MementoFragment)
+            {
+                mListenerM = (MementoFragment)fragment;
+                mData = mListenerM.getData();
+                return;
+            }
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString());
+        }
     }
 
     @Override
@@ -34,17 +61,9 @@ public class RecycleFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // this is data fro recycler view
-        Event itemsData[] = {new Event("Fuel",200000,"23.02.2000",R.drawable.ic_local_gas_station_black_24dp),
-                new Event("Fuel",200050,"23.02.2000",R.drawable.ic_local_gas_station_black_24dp),
-                new Event("Service",200100,"23.02.2000",R.drawable.ic_settings_black_24dp),
-                new Event("Fuel",200200,"23.02.2000",R.drawable.ic_local_gas_station_black_24dp),
-                new Event("Service",200300,"23.02.2000",R.drawable.ic_settings_black_24dp),
-                new Event("Fuel",200040,"23.02.2000",R.drawable.ic_local_gas_station_black_24dp)
-        };
-
 
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(itemsData);
+        MyAdapter mAdapter = new MyAdapter(mData.getValue());
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
         // 5. set item animator to DefaultAnimator

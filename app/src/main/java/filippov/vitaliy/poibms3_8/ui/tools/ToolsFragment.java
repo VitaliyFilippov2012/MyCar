@@ -1,5 +1,6 @@
 package filippov.vitaliy.poibms3_8.ui.tools;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,15 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
+import filippov.vitaliy.poibms3_8.RecycleFragment;
 
-public class ToolsFragment extends Fragment {
+public class ToolsFragment extends Fragment{
 
     private ToolsViewModel toolsViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
@@ -25,4 +28,9 @@ public class ToolsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tools, container, false);
         return root;
     }
+
+    public LiveData<Event[]> getData() {
+       return toolsViewModel.getText();
+    }
+
 }
