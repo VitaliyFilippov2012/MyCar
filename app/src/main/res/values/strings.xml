@@ -6,5 +6,8 @@
     <string name="menu_tools">Tools</string>
 
 
-
+    <string-array name="spinner_cars">
+        <item>Kia Sorento</item>
+        <item>Add new car</item>
+    </string-array>
 </resources>

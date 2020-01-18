@@ -1,5 +1,6 @@
 package filippov.vitaliy.poibms3_8;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -20,11 +21,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    private Spinner spinner_cars;
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        spinner_cars = findViewById(R.id.spinner_cars);
+        ArrayAdapter<?> adapter =
+                ArrayAdapter.createFromResource(this, R.array.spinner_cars, android.R.layout.simple_spinner_item);
+//        ArrayAdapter fromResource = ArrayAdapter.createFromResource(
+//                this,
+//                R.array.spinner_cars,
+//                R.id.spinner_row
+//        );
+        //spinner_cars.setAdapter(adapter);
     }
 
     @Override
