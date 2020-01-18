@@ -25,7 +25,7 @@ public class ToolsFragment extends Fragment{
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
                 ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
+        View root = inflater.inflate(R.layout.fragment_list, container, false);
         return root;
     }
 

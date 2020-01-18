@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
+import filippov.vitaliy.poibms3_8.ui.fuel.FuelsListFragment;
 import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
 import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
 
@@ -21,6 +22,8 @@ public class RecycleFragment extends Fragment {
 
     private ToolsFragment mListenerT;
     private MementoFragment mListenerM;
+    private FuelsListFragment mListenerF;
+
     private LiveData<Event[]> mData;
     public RecycleFragment() {
 
@@ -42,6 +45,12 @@ public class RecycleFragment extends Fragment {
             {
                 mListenerM = (MementoFragment)fragment;
                 mData = mListenerM.getData();
+                return;
+            }
+            if(fragment instanceof FuelsListFragment)
+            {
+                mListenerF = (FuelsListFragment)fragment;
+                mData = mListenerF.getData();
                 return;
             }
         } catch (ClassCastException e) {

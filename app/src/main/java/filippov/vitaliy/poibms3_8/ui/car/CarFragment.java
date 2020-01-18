@@ -22,13 +22,6 @@ public class CarFragment extends Fragment {
         carViewModel =
                 ViewModelProviders.of(this).get(CarViewModel.class);
         View root = inflater.inflate(R.layout.fragment_car, container, false);
-        final TextView textView = root.findViewById(R.id.type_fuel);
-        carViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

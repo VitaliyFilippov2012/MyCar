@@ -4,15 +4,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import filippov.vitaliy.poibms3_8.Data.Events.Event;
+
 public class FuelViewModel extends ViewModel {
-    private MutableLiveData<String> mText;
+    private MutableLiveData<Event[]> mText;
 
     public FuelViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is Fuel fragment");
+        mText.setValue(new Event[]{new Event("Fuel",1300000,"23.02.2000")});
     }
 
-    public LiveData<String> getText() {
+    public LiveData<Event[]> getText() {
         return mText;
     }
 }
