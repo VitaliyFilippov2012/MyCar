@@ -2,7 +2,10 @@ package filippov.vitaliy.poibms3_8;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,8 +16,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import filippov.vitaliy.poibms3_8.Base.Constants;
+import filippov.vitaliy.poibms3_8.Base.DataBase.DBHelper;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -36,7 +44,36 @@ public class MainActivity extends AppCompatActivity{
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        LoadToSharedPreferences();
         LoadStringSets();
+        SQLiteDatabase db = DBHelper.getInstance(this.getBaseContext()).getReadableDatabase();
+        Cursor userCursor = db.rawQuery("select *  from Cars Where IdCar = 1", null);
+        if (userCursor.getCount() > 0) {
+            userCursor.moveToFirst();
+            Toast.makeText(getBaseContext(), userCursor.getString(2), Toast.LENGTH_SHORT).show();
+
+        } else {
+            Toast.makeText(getBaseContext(), "Добавьте записи в талицу", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void LoadToSharedPreferences(){
+        SharedPreferences mSettings = getSharedPreferences("param", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSettings.edit();
+        Set<String> set = new HashSet<String>();
+        set.add("Бензин АИ-98");
+        set.add("Бензин АИ-95");
+        set.add("Бензин АИ-92");
+        set.add("Бензин АИ-Super");
+        set.add("Бензин АИ-100");
+        set.add("Дизель");
+        set.add("Пропан");
+        set.add("Метан");
+        set.add("СПГ");
+        set.add("Электричество");
+        editor.putStringSet("typeFuel", set);
+        editor.apply();
+        editor.commit();
     }
 
     private void LoadStringSets(){

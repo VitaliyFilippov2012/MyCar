@@ -22,6 +22,18 @@ public class Event {
         setTypeEvent(nameEvent);
     }
 
+    public Event(String nameEvent, float cost, long mileage, String comment, String dateEvent, String typeFuel, int volume, String typeDetail, float costDetail) {
+        this.nameEvent = nameEvent;
+        this.cost = cost;
+        this.mileage = mileage;
+        this.comment = comment;
+        this.dateEvent = dateEvent;
+        this.typeFuel = typeFuel;
+        this.volume = volume;
+        this.typeDetail = typeDetail;
+        this.costDetail = costDetail;
+    }
+
     public void setTypeEvent(String nameEvent) {
         this.nameEvent = nameEvent;
         if(nameEvent.toLowerCase().contains("wash")||nameEvent.toLowerCase().contains("мойка"))
