@@ -1,6 +1,8 @@
 package filippov.vitaliy.poibms3_8;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -11,6 +13,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
+
+import filippov.vitaliy.poibms3_8.Base.Constants;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -32,6 +36,12 @@ public class MainActivity extends AppCompatActivity{
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        LoadStringSets();
+    }
+
+    private void LoadStringSets(){
+        SharedPreferences mSettings = getSharedPreferences("param", Context.MODE_PRIVATE);
+        Constants.typeFuel = mSettings.getStringSet("typeFuel",null).toArray(new String[]{});
     }
 
     @Override

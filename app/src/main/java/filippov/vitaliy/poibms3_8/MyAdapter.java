@@ -1,24 +1,13 @@
 package filippov.vitaliy.poibms3_8;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.ConcurrentModificationException;
-import java.util.zip.Inflater;
-
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
-import filippov.vitaliy.poibms3_8.ui.fuel.FuelFragment;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -50,19 +39,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                View view = inflater.inflate(R.layout.fragment_fuel, null);
-//                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                builder.setIcon(R.drawable.ic_add_circle_outline_black_24dp)
-//                        .setTitle("VVV")
-//                        .setView(view).setPositiveButton("OK",new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int id) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//                builder.create().show();
                 Intent intent = new Intent(context, Page.class);
                 context.startActivity(intent);
-
             }
         });
     }
@@ -84,7 +62,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     }
 
-    // Return the size of your itemsData (invoked by the layout manager)
     @Override
     public int getItemCount() {
         return itemsData.length;
