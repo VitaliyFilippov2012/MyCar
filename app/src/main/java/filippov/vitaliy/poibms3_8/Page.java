@@ -2,18 +2,10 @@ package filippov.vitaliy.poibms3_8;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-
 import filippov.vitaliy.poibms3_8.ui.car.CarFragment;
 import filippov.vitaliy.poibms3_8.ui.fuel.FuelFragment;
-import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
 import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
 
 public class Page extends AppCompatActivity {

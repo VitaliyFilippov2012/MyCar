@@ -45,12 +45,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             viewHolder.text.setText(String.valueOf("Пробег: "+itemsCar[position].getMileage()+"км."));
             viewHolder.imgViewIcon.setImageResource(R.drawable.ic_directions_car_black_24dp);
             viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                private  int p = position;
                 @Override
                 public void onClick(View v) {
+                    int id = itemsCar[position].getId();
                     Intent intent = new Intent(context, Page.class);
                     intent.putExtra("Type","Car");
-                    intent.putExtra("Pos",p);
+                    intent.putExtra("Pos",id);
                     context.startActivity(intent);
                 }
             });

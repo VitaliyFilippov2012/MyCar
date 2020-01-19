@@ -27,7 +27,6 @@ public class ToolsListFragment extends Fragment {
     }
 
     public LiveData<Event[]> getData(Context context) {
-
         return toolsViewModel.getText(context);
     }
 }

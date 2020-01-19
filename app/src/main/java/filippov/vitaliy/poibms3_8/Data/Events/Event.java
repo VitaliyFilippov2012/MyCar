@@ -122,4 +122,7 @@ public class Event {
         return typeEvent;
     }
 
+    public boolean compareEvent(Event e) {
+        return this.getDateEvent().equals(e.getDateEvent()) && this.getNameEvent().equals(e.getNameEvent());
+    }
 }

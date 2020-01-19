@@ -27,6 +27,8 @@ import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import filippov.vitaliy.poibms3_8.Base.Constants;
+import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
+import filippov.vitaliy.poibms3_8.Data.Events.Category;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 
 public class WorkWithXML {
@@ -36,27 +38,38 @@ public class WorkWithXML {
         this.wf = workWithFile;
     }
 
-    private Document getXMLDocumentFromEvent(ArrayList<String> categoriesName, ArrayList<Event> events) {
+
+    private Document getXMLDocumentFromEvent(ArrayList<String> categoriesName,ArrayList<Event> events) {
         try {
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = documentBuilder.newDocument();
-
             Element categories = doc.createElement("Categories");
             for (String item : categoriesName) {
                 Element category = doc.createElement("Category");
                 category.setAttribute("Name", item);
-
-//                for (Event e : events) {
-//                    if (e.getCategory().equals(item)) {
-//                        Element eventElement = doc.createElement("Event");
-//                        eventElement.setAttribute("Name", e.getName());
-//                        eventElement.setAttribute("Date", e.getDate());
-//                        eventElement.setAttribute("Info", e.getInfo());
-//                        category.appendChild(eventElement);
-//                    }
-//
-//                }
-
+                for (Event e : events) {
+                    if (e.getNameEvent().equals(item)) {
+                        Element eventElement = doc.createElement("Event");
+                        eventElement.setAttribute("Name", e.getNameEvent());
+                        eventElement.setAttribute("Date", e.getDateEvent());
+                        eventElement.setAttribute("Cost", String.valueOf(e.getCost()));
+                        eventElement.setAttribute("Mileage", e.getMileage());
+                        eventElement.setAttribute("Comment", e.getComment());
+                        if(e.getNameEvent().contains("Fuel")||e.getNameEvent().contains("Заправка")){
+                            eventElement.setAttribute("TypeFuel", e.getTypeFuel());
+                            eventElement.setAttribute("Volume", String.valueOf(e.getVolume()));
+                            eventElement.setAttribute("TypeDetail", "");
+                            eventElement.setAttribute("CostDetail", "0");
+                        }
+                        else{
+                            eventElement.setAttribute("TypeFuel", "");
+                            eventElement.setAttribute("Volume", "0");
+                            eventElement.setAttribute("TypeDetail", e.getTypeDetail());
+                            eventElement.setAttribute("CostDetail", String.valueOf(e.getCostDetail()));
+                        }
+                        category.appendChild(eventElement);
+                    }
+                }
                 categories.appendChild(category);
             }
             doc.appendChild(categories);
@@ -74,16 +87,23 @@ public class WorkWithXML {
         for (int i = 0; i < elements.getLength(); i++) {
             Node categoryNode = elements.item(i);
             String category = categoryNode.getAttributes().getNamedItem("Name").getTextContent();
-//            Category.addCategoryNames(category);
-//
-//            NodeList eventsList = categoryNode.getChildNodes();
-//            for (int a = 0; a < eventsList.getLength(); a++) {
-//                Node taskNode = eventsList.item(a);
-//                Event task = new Event(taskNode.getAttributes().getNamedItem("Name").getTextContent(),
-//                        taskNode.getAttributes().getNamedItem("Info").getTextContent(), taskNode.getAttributes().getNamedItem("Date").getTextContent(),
-//                        category);
-//                CalendarEvents.addEvent(task);
-//            }
+            Category.addCategoryNames(category);
+
+            NodeList eventsList = categoryNode.getChildNodes();
+            for (int a = 0; a < eventsList.getLength(); a++) {
+                Node taskNode = eventsList.item(a);
+                Event task = new Event(taskNode.getAttributes().getNamedItem("Name").getTextContent(),
+                        Float.valueOf(taskNode.getAttributes().getNamedItem("Cost").getTextContent()),
+                        Long.valueOf(taskNode.getAttributes().getNamedItem("Mileage").getTextContent()),
+                        taskNode.getAttributes().getNamedItem("Comment").getTextContent(),
+                        taskNode.getAttributes().getNamedItem("Date").getTextContent(),
+                        taskNode.getAttributes().getNamedItem("TypeFuel").getTextContent(),
+                        Integer.valueOf(taskNode.getAttributes().getNamedItem("Volume").getTextContent()),
+                        taskNode.getAttributes().getNamedItem("TypeDetail").getTextContent(),
+                        Float.valueOf(taskNode.getAttributes().getNamedItem("CostDetail").getTextContent())
+                        );
+                CalendarEvents.addEvent(task);
+            }
         }
     }
 

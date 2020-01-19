@@ -17,15 +17,12 @@ import filippov.vitaliy.poibms3_8.Data.Car;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.ui.car.CarsListFragment;
 import filippov.vitaliy.poibms3_8.ui.fuel.FuelsListFragment;
-import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
-import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
 import filippov.vitaliy.poibms3_8.ui.tools.ToolsListFragment;
 
 
 public class RecycleFragment extends Fragment {
 
     private ToolsListFragment mListenerT;
-    private MementoFragment mListenerM;
     private FuelsListFragment mListenerF;
     private CarsListFragment mListenerC;
 
@@ -46,12 +43,6 @@ public class RecycleFragment extends Fragment {
             {
                 mListenerT = (ToolsListFragment)fragment;
                 mDataE = mListenerT.getData(context);
-                return;
-            }
-            if(fragment instanceof MementoFragment)
-            {
-                mListenerM = (MementoFragment)fragment;
-                mDataE = mListenerM.getData(context);
                 return;
             }
             if(fragment instanceof FuelsListFragment)

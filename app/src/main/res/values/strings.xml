@@ -35,4 +35,6 @@
     <string name="type_service">Type service</string>
     <string name="name_service">Enter name service</string>
     <string name="work_or_detail">Work or detail</string>
+    <string name="add_car">Add car</string>
+    <string name="update">Update</string>
 </resources>

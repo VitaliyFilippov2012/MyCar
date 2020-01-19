@@ -30,6 +30,20 @@ public class WorkWithFile{
         return true;
     }
 
+    public boolean createFileIfNotExists() {
+        try {
+            if (!checkFile()) {
+                file.createNewFile();
+                Log.d(Constants.TAG, "Создали файл: " + file.getName());
+            }
+
+        }
+        catch (IOException e) {
+            return false;
+        }
+        return true;
+    }
+
     public boolean deleteFile() {
         file.delete();
         Log.d(Constants.TAG,"Удалили файл: "+file.getName());

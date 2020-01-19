@@ -22,10 +22,4 @@
         android:name="filippov.vitaliy.poibms3_8.ui.tools.ToolsListFragment"
         android:label="@string/services_list"
         tools:layout="@layout/fragment_list"/>
-
-    <fragment
-        android:id="@+id/nav_events"
-        android:name="filippov.vitaliy.poibms3_8.ui.memento.MementoFragment"
-        android:label="@string/events"
-        tools:layout="@layout/fragment_memento" />
 </navigation>
