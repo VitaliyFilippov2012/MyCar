@@ -31,4 +31,5 @@
     <string name="save">Save</string>
     <string name="type_engine">Type engine</string>
     <string name="vin">VIN</string>
+    <string name="title_activity_page">Page</string>
 </resources>

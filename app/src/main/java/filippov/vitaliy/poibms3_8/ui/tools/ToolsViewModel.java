@@ -13,7 +13,7 @@ public class ToolsViewModel extends ViewModel {
 
     public ToolsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue(new Event[]{new Event("Мойка",1300000,"23.02.2000")});
+        mText.setValue(new Event[]{new Event("Мойка",1300000,"23.02.2000"),new Event("Сервис",1300000,"23.02.2000")});
     }
 
     public LiveData<Event[]> getText() {

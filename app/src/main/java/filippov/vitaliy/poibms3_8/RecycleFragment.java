@@ -26,7 +26,6 @@ public class RecycleFragment extends Fragment {
 
     private LiveData<Event[]> mData;
     public RecycleFragment() {
-
     }
 
     @Override
@@ -72,7 +71,7 @@ public class RecycleFragment extends Fragment {
         // this is data fro recycler view
 
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(mData.getValue());
+        MyAdapter mAdapter = new MyAdapter(mData.getValue(),getContext());
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
         // 5. set item animator to DefaultAnimator
