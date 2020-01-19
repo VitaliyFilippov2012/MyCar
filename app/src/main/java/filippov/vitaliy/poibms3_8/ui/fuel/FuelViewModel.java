@@ -1,5 +1,7 @@
 package filippov.vitaliy.poibms3_8.ui.fuel;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -14,7 +16,7 @@ public class FuelViewModel extends ViewModel {
         mText.setValue(new Event[]{new Event("Fuel",1300000,"23.02.2000")});
     }
 
-    public LiveData<Event[]> getText() {
+    public LiveData<Event[]> getText(Context context) {
         return mText;
     }
 }

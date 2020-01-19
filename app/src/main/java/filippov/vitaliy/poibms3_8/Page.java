@@ -1,5 +1,6 @@
 package filippov.vitaliy.poibms3_8;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -10,7 +11,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 
+import filippov.vitaliy.poibms3_8.ui.car.CarFragment;
 import filippov.vitaliy.poibms3_8.ui.fuel.FuelFragment;
+import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
+import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
 
 public class Page extends AppCompatActivity {
 
@@ -20,10 +24,29 @@ public class Page extends AppCompatActivity {
         setContentView(R.layout.activity_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        String type = intent.getStringExtra("Type");
+        int pos = intent.getIntExtra("Pos",0);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new FuelFragment())
-                    .commit();
+            if(type.equals("Car")){
+                CarFragment.curPos = pos;
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new CarFragment())
+                        .commit();
+                return;
+            }
+            if(type.equals("Fuel")){
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new FuelFragment())
+                        .commit();
+                return;
+            }
+            if(type.equals("Service")){
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new ToolsFragment())
+                        .commit();
+                return;
+            }
         }
     }
 

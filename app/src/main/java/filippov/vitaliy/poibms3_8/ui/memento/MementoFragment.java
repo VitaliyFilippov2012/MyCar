@@ -1,4 +1,5 @@
 package filippov.vitaliy.poibms3_8.ui.memento;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class MementoFragment extends Fragment {
         return root;
     }
 
-    public LiveData<Event[]> getData() {
-        return mementoViewModel.getText();
+    public LiveData<Event[]> getData(Context context) {
+        return mementoViewModel.getText(context);
     }
 }

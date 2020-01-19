@@ -46,15 +46,7 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupWithNavController(navigationView, navController);
         LoadToSharedPreferences();
         LoadStringSets();
-        SQLiteDatabase db = DBHelper.getInstance(this.getBaseContext()).getReadableDatabase();
-        Cursor userCursor = db.rawQuery("select *  from Cars Where IdCar = 1", null);
-        if (userCursor.getCount() > 0) {
-            userCursor.moveToFirst();
-            Toast.makeText(getBaseContext(), userCursor.getString(2), Toast.LENGTH_SHORT).show();
 
-        } else {
-            Toast.makeText(getBaseContext(), "Добавьте записи в талицу", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void LoadToSharedPreferences(){

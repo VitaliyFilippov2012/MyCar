@@ -32,4 +32,7 @@
     <string name="type_engine">Type engine</string>
     <string name="vin">VIN</string>
     <string name="title_activity_page">Page</string>
+    <string name="type_service">Type service</string>
+    <string name="name_service">Enter name service</string>
+    <string name="work_or_detail">Work or detail</string>
 </resources>

@@ -20,7 +20,6 @@ import filippov.vitaliy.poibms3_8.R;
 
 public class FuelFragment extends Fragment {
 
-    //String[] typeFuel; //= {"Бензин АИ-98", "Бензин АИ-95", "Бензин АИ-92", "Бензин АИ-98", "Бензин АИ-Super", "Бензин АИ-100", "Дизель", "Пропан", "Метан", "СПГ", "Электричество"};//xml or json
     private FuelViewModel fuelViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,

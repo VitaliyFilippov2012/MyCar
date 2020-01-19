@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.memento.MementoFragment">
+    tools:context=".ui.tools.ToolsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -25,9 +25,45 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                android:contentDescription="@string/enter_date"
+                android:contentDescription="@string/type_service"
                 android:padding="5dp"
-                app:srcCompat="@drawable/ic_local_gas_station_black_24dp" />
+                app:srcCompat="@drawable/ic_settings_black_24dp" />
+
+            <EditText
+                android:id="@+id/type_service"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/type_service"
+                android:inputType="text"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="viewStart"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:typeface="normal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginVertical="10dp"
+                android:contentDescription="@string/name_service"
+                android:padding="5dp"
+                app:srcCompat="@drawable/ic_mode_edit_black_24dp" />
 
             <EditText
                 android:id="@+id/type_fuel"
@@ -36,7 +72,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints="200dp"
-                android:hint="Type Fuel"
+                android:hint="@string/name_service"
                 android:inputType="text"
                 android:padding="5dp"
                 android:text=""
@@ -61,9 +97,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
                 android:layout_marginVertical="10dp"
-                android:contentDescription="@string/enter_date"
+                android:contentDescription="@string/name_service"
                 android:padding="5dp"
-                app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
+                app:srcCompat="@drawable/ic_device_hub_black_24dp" />
 
             <EditText
                 android:id="@+id/volume_fuel"
@@ -72,8 +108,8 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginEnd="10dp"
                 android:autofillHints="200dp"
-                android:hint="@string/quantity"
-                android:inputType="number"
+                android:hint="@string/work_or_detail"
+                android:inputType="text"
                 android:padding="5dp"
                 android:text=""
                 android:textAlignment="viewStart"

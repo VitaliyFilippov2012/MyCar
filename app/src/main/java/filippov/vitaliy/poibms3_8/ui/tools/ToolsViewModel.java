@@ -1,5 +1,7 @@
 package filippov.vitaliy.poibms3_8.ui.tools;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,7 +18,7 @@ public class ToolsViewModel extends ViewModel {
         mText.setValue(new Event[]{new Event("Мойка",1300000,"23.02.2000"),new Event("Сервис",1300000,"23.02.2000")});
     }
 
-    public LiveData<Event[]> getText() {
+    public LiveData<Event[]> getText(Context context) {
         return mText;
     }
 }

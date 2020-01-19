@@ -25,12 +25,12 @@ public class ToolsFragment extends Fragment{
                              ViewGroup container, Bundle savedInstanceState) {
         toolsViewModel =
                 ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_list, container, false);
+        View root = inflater.inflate(R.layout.fragment_tool, container, false);
         return root;
     }
 
-    public LiveData<Event[]> getData() {
-       return toolsViewModel.getText();
+    public LiveData<Event[]> getData(Context context) {
+       return toolsViewModel.getText(context);
     }
 
 }

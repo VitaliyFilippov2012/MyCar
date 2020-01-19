@@ -6,18 +6,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
+
+import filippov.vitaliy.poibms3_8.Data.Car;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     private Event[] itemsData;
+    private Car[]   itemsCar;
     private Context context;
     private LayoutInflater inflater;
 
-    public MyAdapter(Event[] itemsData,Context context) {
-        this.itemsData = itemsData;
+    public MyAdapter(LiveData<Event[]> itemsData, LiveData<Car[]> itemsCar, Context context) {
+        this.itemsData = itemsData == null ? null:itemsData.getValue() ;
         this.context = context;
+        this.itemsCar = itemsCar == null ? null:itemsCar.getValue();
     }
 
     @Override
@@ -31,18 +37,53 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder viewHolder, int position) {
-        viewHolder.date.setText(itemsData[position].getDateEvent());
-        viewHolder.meliage.setText(itemsData[position].getMileage());
-        viewHolder.text.setText(itemsData[position].getNameEvent());
-        viewHolder.imgViewIcon.setImageResource(itemsData[position].getTypeEvent());
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, Page.class);
-                context.startActivity(intent);
+    public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
+        if(itemsCar != null){
+            String concat = itemsCar[position].getMark()+" "+itemsCar[position].getModel();
+            viewHolder.date.setText(concat);
+            viewHolder.meliage.setText(String.valueOf(itemsCar[position].getYearOfIssue()+"г."));
+            viewHolder.text.setText(String.valueOf("Пробег: "+itemsCar[position].getMileage()+"км."));
+            viewHolder.imgViewIcon.setImageResource(R.drawable.ic_directions_car_black_24dp);
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                private  int p = position;
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, Page.class);
+                    intent.putExtra("Type","Car");
+                    intent.putExtra("Pos",p);
+                    context.startActivity(intent);
+                }
+            });
+            return;
+        }
+        if(itemsData!=null){
+            viewHolder.date.setText(itemsData[position].getDateEvent());
+            viewHolder.meliage.setText(itemsData[position].getMileage());
+            viewHolder.text.setText(itemsData[position].getNameEvent());
+            viewHolder.imgViewIcon.setImageResource(itemsData[position].getTypeEvent());
+            if(itemsData[position].getTypeEvent() == R.drawable.ic_local_gas_station_black_24dp){
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, Page.class);
+                        intent.putExtra("Type","Fuel");
+                        context.startActivity(intent);
+                    }
+                });
             }
-        });
+            else{
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, Page.class);
+                        intent.putExtra("Type","Service");
+                        context.startActivity(intent);
+                    }
+                });
+            }
+
+        }
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -64,6 +105,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return itemsData.length;
+        return itemsData == null ? itemsCar.length:itemsData.length;
     }
 }

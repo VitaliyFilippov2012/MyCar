@@ -1,4 +1,4 @@
-package filippov.vitaliy.poibms3_8.ui.fuel;
+package filippov.vitaliy.poibms3_8.ui.tools;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,19 +14,20 @@ import androidx.lifecycle.ViewModelProviders;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
 
-public class FuelsListFragment extends Fragment {
+public class ToolsListFragment extends Fragment {
 
-    private FuelViewModel fuelViewModel;
+    private ToolsViewModel toolsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        fuelViewModel =
-                ViewModelProviders.of(this).get(FuelViewModel.class);
+        toolsViewModel =
+                ViewModelProviders.of(this).get(ToolsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_list, container, false);
         return root;
     }
 
     public LiveData<Event[]> getData(Context context) {
-        return fuelViewModel.getText(context);
+
+        return toolsViewModel.getText(context);
     }
 }

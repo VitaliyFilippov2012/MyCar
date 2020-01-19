@@ -12,19 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import filippov.vitaliy.poibms3_8.Data.Car;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
+import filippov.vitaliy.poibms3_8.ui.car.CarsListFragment;
 import filippov.vitaliy.poibms3_8.ui.fuel.FuelsListFragment;
 import filippov.vitaliy.poibms3_8.ui.memento.MementoFragment;
 import filippov.vitaliy.poibms3_8.ui.tools.ToolsFragment;
+import filippov.vitaliy.poibms3_8.ui.tools.ToolsListFragment;
 
 
 public class RecycleFragment extends Fragment {
 
-    private ToolsFragment mListenerT;
+    private ToolsListFragment mListenerT;
     private MementoFragment mListenerM;
     private FuelsListFragment mListenerF;
+    private CarsListFragment mListenerC;
 
-    private LiveData<Event[]> mData;
+
+    private LiveData<Event[]> mDataE;
+    private LiveData<Car[]> mDataC;
+
     public RecycleFragment() {
     }
 
@@ -34,22 +42,28 @@ public class RecycleFragment extends Fragment {
         Fragment fragment = getParentFragment();
 
         try {
-            if(fragment instanceof ToolsFragment)
+            if(fragment instanceof ToolsListFragment)
             {
-                mListenerT = (ToolsFragment)fragment;
-                mData = mListenerT.getData();
+                mListenerT = (ToolsListFragment)fragment;
+                mDataE = mListenerT.getData(context);
                 return;
             }
             if(fragment instanceof MementoFragment)
             {
                 mListenerM = (MementoFragment)fragment;
-                mData = mListenerM.getData();
+                mDataE = mListenerM.getData(context);
                 return;
             }
             if(fragment instanceof FuelsListFragment)
             {
                 mListenerF = (FuelsListFragment)fragment;
-                mData = mListenerF.getData();
+                mDataE = mListenerF.getData(context);
+                return;
+            }
+            if(fragment instanceof CarsListFragment)
+            {
+                mListenerC = (CarsListFragment)fragment;
+                mDataC = mListenerC.getData(context);
                 return;
             }
         } catch (ClassCastException e) {
@@ -71,7 +85,7 @@ public class RecycleFragment extends Fragment {
         // this is data fro recycler view
 
         // 3. create an adapter
-        MyAdapter mAdapter = new MyAdapter(mData.getValue(),getContext());
+        MyAdapter mAdapter = new MyAdapter(mDataE,mDataC,getContext());
         // 4. set adapter
         recyclerView.setAdapter(mAdapter);
         // 5. set item animator to DefaultAnimator
