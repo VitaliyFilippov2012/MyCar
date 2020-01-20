@@ -14,18 +14,20 @@ public class CalendarEvents {
     private static ArrayList<Event> events;
     static {
         events = new ArrayList<Event>();
-        events.add(new Event("Fuel", 45.6f, 1300000, "", "23.02.2000", "Дизель", 45));
-        events.add(new Event("Fuel", 15.6f, 1300000, "", "13.02.2010", "Дизель", 15));
-        events.add(new Event("Fuel", 85.6f, 1300000, "", "23.12.2012", "Дизель", 75));
-        events.add(new Event("Fuel", 95.6f, 1300000, "", "16.02.2001", "Дизель", 65));
-        events.add(new Event("Fuel", 235.6f, 1300000, "", "5.02.2003", "Дизель", 105));
-        events.add(new Event("Service", "TO",235.6f, 1300000, "", "5.02.2003", 100));
-        events.add(new Event("Wash", "",235.6f, 1310000, "", "5.02.2003",10));
-        events.add(new Event("Service", "Шины",235.6f, 1320000, "", "5.02.2003", 150));
-        events.add(new Event("Wash","" ,235.6f, 1330000, "", "5.02.2003", 15));
-        synchronizedEventsWithFile();
         events.clear();
         loadFromFile();
+        if(events.size()==0){
+            events.add(new Event("Fuel", 45.6f, 1300000, "", "23.02.2000", "Дизель", 45));
+            events.add(new Event("Fuel", 15.6f, 1300000, "", "13.02.2010", "Дизель", 15));
+            events.add(new Event("Fuel", 85.6f, 1300000, "", "23.12.2012", "Дизель", 75));
+            events.add(new Event("Fuel", 95.6f, 1300000, "", "16.02.2001", "Дизель", 65));
+            events.add(new Event("Fuel", 235.6f, 1300000, "", "5.02.2003", "Дизель", 105));
+            events.add(new Event("Service", "TO",235.6f, 1300000, "", "5.02.2003", 100));
+            events.add(new Event("Wash", "",235.6f, 1310000, "", "5.02.2003",10));
+            events.add(new Event("Service", "Шины",235.6f, 1320000, "", "5.02.2003", 150));
+            events.add(new Event("Wash","" ,235.6f, 1330000, "", "5.02.2003", 15));
+            synchronizedEventsWithFile();
+        }
         Log.d("MyEvent", "Static block");
     }
 

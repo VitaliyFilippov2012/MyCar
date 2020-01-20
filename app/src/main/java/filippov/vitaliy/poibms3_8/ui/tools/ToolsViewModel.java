@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModel;
 
 import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
-import filippov.vitaliy.poibms3_8.R;
 
 public class ToolsViewModel extends ViewModel {
     public static int currentEventPos = 0;

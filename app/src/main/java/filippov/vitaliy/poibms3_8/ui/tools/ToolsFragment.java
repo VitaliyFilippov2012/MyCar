@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import filippov.vitaliy.poibms3_8.Data.Events.Category;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
 import filippov.vitaliy.poibms3_8.RecycleFragment;
+import filippov.vitaliy.poibms3_8.ui.date.DateViewModel;
 
 public class ToolsFragment extends Fragment{
 
@@ -34,6 +36,7 @@ public class ToolsFragment extends Fragment{
     EditText comments;
     Button save;
     Button delete;
+    String spinnerText;
     private Spinner editCategory;
     private ToolsViewModel toolsViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -41,6 +44,7 @@ public class ToolsFragment extends Fragment{
         toolsViewModel =
                 ViewModelProviders.of(this).get(ToolsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tool, container, false);
+        spinnerText = "";
         return root;
     }
 
@@ -69,18 +73,33 @@ public class ToolsFragment extends Fragment{
         costs = v.findViewById(R.id.cost_fuel);
         mileage = v.findViewById(R.id.mileage);
         comments = v.findViewById(R.id.comment);
-        save = v.findViewById(R.id.clear);
-        delete = v.findViewById(R.id.ok);
+        save = v.findViewById(R.id.ok);
+        delete = v.findViewById(R.id.clear);
+        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                spinnerText = (String)parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+        editCategory.setOnItemSelectedListener(itemSelectedListener);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //CalendarEvents.addEvent(getInfoInControl(),true);
                 clearControl();
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CalendarEvents.removeEvent(getInfoInControl());
                 clearControl();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
     }
@@ -96,15 +115,17 @@ public class ToolsFragment extends Fragment{
         }
     }
 
-    private Event getInfoInControl(){
+ private Event getInfoInControl(){
         Event e = new Event(
-                "Fuel",
-                Integer.valueOf(costs.getText().toString()),
+                spinnerText,
+                Float.valueOf(costs.getText().toString()),
                 Long.valueOf(mileage.getText().toString()),
                 comments.getText().toString(),
-                dateEvents.getText().toString(),
+                DateViewModel.getDate(),
+                "",
+                0,
                 typeDetail.getText().toString(),
-                Integer.valueOf(costDetail.getText().toString())
+                Float.valueOf(costDetail.getText().toString())
         );
         return e;
     }

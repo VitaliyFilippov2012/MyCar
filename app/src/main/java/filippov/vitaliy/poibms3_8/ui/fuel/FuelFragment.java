@@ -22,6 +22,7 @@ import filippov.vitaliy.poibms3_8.Base.Constants;
 import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
+import filippov.vitaliy.poibms3_8.ui.date.DateViewModel;
 
 
 public class FuelFragment extends Fragment {
@@ -60,18 +61,22 @@ public class FuelFragment extends Fragment {
         costs = v.findViewById(R.id.cost_fuel);
         mileage = v.findViewById(R.id.mileage);
         comments = v.findViewById(R.id.comment);
-        save = v.findViewById(R.id.clear);
-        delete = v.findViewById(R.id.ok);
+        save = v.findViewById(R.id.ok);
+        delete = v.findViewById(R.id.clear);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CalendarEvents.addEvent(getInfoInControl(),true);
                 clearControl();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CalendarEvents.removeEvent(getInfoInControl());
                 clearControl();
+                getActivity().getSupportFragmentManager().popBackStack();
             }
         });
     }
@@ -89,10 +94,10 @@ public class FuelFragment extends Fragment {
     private Event getInfoInControl(){
         Event e = new Event(
                 "Fuel",
-                Integer.valueOf(costs.getText().toString()),
+                Float.valueOf(costs.getText().toString()),
                 Long.valueOf(mileage.getText().toString()),
                 comments.getText().toString(),
-                dateEvents.getText().toString(),
+                DateViewModel.getDate(),
                 typeFuel.getText().toString(),
                 Integer.valueOf(quantity.getText().toString())
         );

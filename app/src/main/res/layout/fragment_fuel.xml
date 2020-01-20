@@ -10,6 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/linearLayout0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginVertical="10dp"
+                android:layout_marginEnd="10dp"
+                android:autofillHints="200dp"
+                android:hint="@string/fuel"
+                android:padding="5dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="normal" />
+        </LinearLayout>
         <!--    Fuel-->
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -19,7 +43,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout0">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -214,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="10dp"
-                android:text="@string/ok" />
+                android:text="@string/save" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

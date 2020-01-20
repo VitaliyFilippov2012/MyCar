@@ -72,6 +72,7 @@ public class CarFragment extends Fragment {
                 clearControl();
             }
         });
+
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

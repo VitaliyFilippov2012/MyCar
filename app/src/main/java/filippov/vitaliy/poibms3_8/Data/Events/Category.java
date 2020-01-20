@@ -14,13 +14,16 @@ public class Category {
     private static ArrayList<String> categoryNames;
 
     static {
-        categoryNames = new ArrayList<String>();
-        categoryNames.add("Wash");
-        categoryNames.add("Service");
-        categoryNames.add("Fuel");
-        categoryNames.add("Other");
-        synchronizedEventsWithFile();
+
         loadFromFile();
+        if(categoryNames.size() == 0){
+            categoryNames = new ArrayList<String>();
+            categoryNames.add("Wash");
+            categoryNames.add("Service");
+            categoryNames.add("Things");
+            categoryNames.add("Other");
+            synchronizedEventsWithFile();
+        }
     }
 
     public static ArrayList<String> getCategoryNames() {

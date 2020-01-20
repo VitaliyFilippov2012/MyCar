@@ -23,8 +23,4 @@ public class FuelViewModel extends ViewModel {
         mText.setValue(e);
         return mText;
     }
-
-    public void AddEvent(Event event){
-        CalendarEvents.addEvent(event,true);
-    }
 }

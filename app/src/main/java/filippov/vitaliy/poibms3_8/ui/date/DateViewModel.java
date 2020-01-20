@@ -12,6 +12,16 @@ public class DateViewModel extends ViewModel {
     private static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
     private static MutableLiveData<String> mText;
 
+    public static String getDate() {
+        return date;
+    }
+
+    public static void setDate(String date) {
+        DateViewModel.date = date;
+    }
+
+    private static String date = "20.01.2020";
+
     public DateViewModel() {
         mText = new MutableLiveData<>();
         Date date = new Date();
@@ -19,6 +29,7 @@ public class DateViewModel extends ViewModel {
     }
 
     public LiveData<String> getText() {
+        setDate(mText.getValue());
         return mText;
     }
 
@@ -28,9 +39,12 @@ public class DateViewModel extends ViewModel {
 
     public static void SetText(long dateAndTime){
         mText.setValue(dateFormat.format(dateAndTime));
+
+        setDate(mText.getValue());
     }
 
     public void setText(long dateAndTime){
         mText.setValue(ConvertDateToString(dateAndTime));
+        setDate(mText.getValue());
     }
 }
