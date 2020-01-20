@@ -32,6 +32,7 @@ public class Event {
         this.volume = volume;
         this.typeDetail = typeDetail;
         this.costDetail = costDetail;
+        
     }
 
     public Event(String nameEvent,  String typeDetail,float cost, long mileage, String comment, String dateEvent, float costDetail) {
