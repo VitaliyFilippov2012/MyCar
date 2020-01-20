@@ -36,6 +36,7 @@ public class ToolsFragment extends Fragment{
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        editCategory = view.findViewById(R.id.edit_event_category);
         setCategory(view);
     }
 

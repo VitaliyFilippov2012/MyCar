@@ -15,6 +15,11 @@ public class Category {
 
     static {
         categoryNames = new ArrayList<String>();
+        categoryNames.add("Wash");
+        categoryNames.add("Service");
+        categoryNames.add("Fuel");
+        categoryNames.add("Other");
+        synchronizedEventsWithFile();
         loadFromFile();
     }
 
