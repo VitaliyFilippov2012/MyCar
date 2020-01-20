@@ -33,6 +33,7 @@ public class CarFragment extends Fragment {
     EditText comments;
     Button save;
     Button delete;
+    Button update;
     private CarViewModel carViewModel;
     public static int curPos = 0;
 
@@ -63,17 +64,30 @@ public class CarFragment extends Fragment {
         comments = v.findViewById(R.id.comment);
         save = v.findViewById(R.id.save);
         delete = v.findViewById(R.id.delete);
+        update = v.findViewById(R.id.update);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setInfoToControl(carViewModel.UpdateCar(getInfoInControl()));
+                carViewModel.InsertCar(getInfoInControl());
+                clearControl();
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Car c = getInfoInControl();
+                c.setId(curPos);
+                setInfoToControl(carViewModel.UpdateCar(c));
             }
         });
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carViewModel.DeleteCar(getInfoInControl());
+                Car c = getInfoInControl();
+                c.setId(curPos);
+                carViewModel.DeleteCar(c);
                 clearControl();
+
             }
         });
     }
@@ -102,7 +116,6 @@ public class CarFragment extends Fragment {
             vin.getText().toString(),
             comments.getText().toString()
         );
-        car.setId(curPos);
         return car;
     }
 
@@ -115,5 +128,6 @@ public class CarFragment extends Fragment {
             mileage.setText("");
             vin.setText("");
             comments.setText("");
+            getActivity().getSupportFragmentManager().popBackStack();
     }
 }

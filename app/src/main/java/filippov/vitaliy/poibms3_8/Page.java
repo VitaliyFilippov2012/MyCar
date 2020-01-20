@@ -27,6 +27,13 @@ public class Page extends AppCompatActivity {
                         .commit();
                 return;
             }
+            if(type.equals("NewCar")){
+                CarFragment.curPos = 0;
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.container, new CarFragment())
+                        .commit();
+                return;
+            }
             if(type.equals("Fuel")){
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.container, new FuelFragment())

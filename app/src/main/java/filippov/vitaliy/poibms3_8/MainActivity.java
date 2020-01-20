@@ -97,20 +97,9 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
                 return true;
             case R.id.new_car:
-                LayoutInflater li = LayoutInflater.from(this);
-                View promptsView = li.inflate(R.layout.fragment_car, null);
-                AlertDialog.Builder mDialogBuilder = new AlertDialog.Builder(this);
-                mDialogBuilder.setView(promptsView);
-                mDialogBuilder
-                        .setCancelable(false)
-                        .setNegativeButton("Cancel",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alertDialog = mDialogBuilder.create();
-                alertDialog.show();
+                Intent intent1 = new Intent(this, Page.class);
+                intent1.putExtra("Type","NewCar");
+                startActivity(intent1);
                 return true;
 
         }
