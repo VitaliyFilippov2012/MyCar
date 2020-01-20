@@ -65,8 +65,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int id = position;
                         Intent intent = new Intent(context, Page.class);
                         intent.putExtra("Type","Fuel");
+                        intent.putExtra("Pos",id);
                         context.startActivity(intent);
                     }
                 });
@@ -75,8 +77,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        int id = position;
                         Intent intent = new Intent(context, Page.class);
                         intent.putExtra("Type","Service");
+                        intent.putExtra("Pos",id);
                         context.startActivity(intent);
                     }
                 });

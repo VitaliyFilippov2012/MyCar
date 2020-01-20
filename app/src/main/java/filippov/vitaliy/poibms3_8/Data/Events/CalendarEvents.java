@@ -43,6 +43,14 @@ public class CalendarEvents {
         return dateEvents;
     }
 
+    public static Event getFuelEventByPos(int pos){
+        return getEventByCategory("Fuel").get(pos);
+    }
+
+    public static Event getEventByPos(int pos){
+        return getEvents().get(pos);
+    }
+
     public static ArrayList<Event> getEventByCategory(String category){
         ArrayList<Event> categoryEvents = new ArrayList<>();
         for(Event e:events){

@@ -11,7 +11,7 @@ import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
 
 public class ToolsViewModel extends ViewModel {
-
+    public static int currentEventPos = 0;
     private MutableLiveData<Event[]> mText;
 
     public ToolsViewModel() {

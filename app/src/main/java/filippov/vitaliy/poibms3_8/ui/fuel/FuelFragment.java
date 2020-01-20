@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import filippov.vitaliy.poibms3_8.Base.Constants;
+import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
 
@@ -50,7 +51,7 @@ public class FuelFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         setConrol(view);
-        //setInfoToControl(view);
+        setInfoToControl(CalendarEvents.getFuelEventByPos(fuelViewModel.currentEventPos));
     }
 
     private void setConrol(View v){
@@ -78,7 +79,7 @@ public class FuelFragment extends Fragment {
     private void setInfoToControl(Event e){
         if (e != null) {
             typeFuel.setText(e.getTypeFuel());
-            quantity.setText(e.getVolume());
+            quantity.setText(String.valueOf(e.getVolume()));
             costs.setText(String.valueOf(e.getCost()));
             mileage.setText(String.valueOf(e.getMileage()));
             comments.setText(e.getComment());

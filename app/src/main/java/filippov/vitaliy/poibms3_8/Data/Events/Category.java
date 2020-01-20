@@ -27,6 +27,14 @@ public class Category {
         return categoryNames;
     }
 
+    public static int getPosItem(String item){
+        for(int i = 0; i< categoryNames.size();i++){
+            if(categoryNames.get(i).equals(item))
+                return i;
+        }
+        return 0;
+    }
+
     public static void setCategoryNames(ArrayList<String> categoryNames) {
         Category.categoryNames.addAll(categoryNames);
     }

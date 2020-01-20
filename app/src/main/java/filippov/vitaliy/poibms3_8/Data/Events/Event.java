@@ -1,10 +1,14 @@
 package filippov.vitaliy.poibms3_8.Data.Events;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.Date;
 
 import filippov.vitaliy.poibms3_8.R;
 
-public class Event {
+public class Event implements Parcelable {
     String nameEvent;
     float cost;
     long mileage;
@@ -15,6 +19,40 @@ public class Event {
     String typeDetail;
     float costDetail;
     int typeEvent;
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(getNameEvent());
+        dest.writeString(getComment());
+        dest.writeInt(getVolume());
+        dest.writeFloat(getCost());
+        dest.writeString(getDateEvent());
+        dest.writeString(getMileage());
+        dest.writeString(getTypeFuel());
+        dest.writeString(getTypeDetail());
+        dest.writeFloat(getCostDetail());
+    }
+
+    public static final Creator<Event> CREATOR = new Creator<Event>() {
+        @Override
+        public Event createFromParcel(Parcel source) {
+            String nameEvent = source.readString();
+            String comment = source.readString();
+            int volume = source.readInt();
+            float cost = source.readFloat();
+            String dateEvent = source.readString();
+            int mileage = source.readInt();
+            String typeFuel = source.readString();
+            String typeDetail = source.readString();
+            float costDetail = source.readFloat();
+            return new Event(nameEvent, cost,mileage,comment, dateEvent, typeFuel,  volume,typeDetail,costDetail);
+            }
+
+        @Override
+        public Event[] newArray(int size) {
+            return new Event[size];
+        }
+    };
 
     public Event(String nameEvent, long mileage, String dateEvent) {
         this.mileage = mileage;
@@ -32,7 +70,7 @@ public class Event {
         this.volume = volume;
         this.typeDetail = typeDetail;
         this.costDetail = costDetail;
-        
+
     }
 
     public Event(String nameEvent,  String typeDetail,float cost, long mileage, String comment, String dateEvent, float costDetail) {
@@ -146,4 +184,11 @@ public class Event {
     public boolean compareEvent(Event e) {
         return this.getDateEvent().equals(e.getDateEvent()) && this.getNameEvent().equals(e.getNameEvent());
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
 }
