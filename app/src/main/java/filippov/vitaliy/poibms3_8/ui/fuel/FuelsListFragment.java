@@ -27,6 +27,6 @@ public class FuelsListFragment extends Fragment {
     }
 
     public LiveData<Event[]> getData(Context context) {
-        return fuelViewModel.getText(context);
+        return fuelViewModel.getText();
     }
 }

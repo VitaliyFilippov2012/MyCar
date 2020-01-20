@@ -102,7 +102,7 @@ public class WorkWithXML {
                         taskNode.getAttributes().getNamedItem("TypeDetail").getTextContent(),
                         Float.valueOf(taskNode.getAttributes().getNamedItem("CostDetail").getTextContent())
                         );
-                CalendarEvents.addEvent(task);
+                CalendarEvents.addEvent(task,false);
             }
         }
     }

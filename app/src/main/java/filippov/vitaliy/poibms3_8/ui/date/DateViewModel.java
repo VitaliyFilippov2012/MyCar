@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class DateViewModel extends ViewModel {
     private static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    private MutableLiveData<String> mText;
+    private static MutableLiveData<String> mText;
 
     public DateViewModel() {
         mText = new MutableLiveData<>();
@@ -22,8 +22,12 @@ public class DateViewModel extends ViewModel {
         return mText;
     }
 
-    public String ConvertDateToString(long dateAndTime){
+    public static String ConvertDateToString(long dateAndTime){
         return dateFormat.format(dateAndTime);
+    }
+
+    public static void SetText(long dateAndTime){
+        mText.setValue(dateFormat.format(dateAndTime));
     }
 
     public void setText(long dateAndTime){

@@ -23,7 +23,7 @@ public class Event {
     }
 
     public Event(String nameEvent, float cost, long mileage, String comment, String dateEvent, String typeFuel, int volume, String typeDetail, float costDetail) {
-        this.nameEvent = nameEvent;
+        setTypeEvent(nameEvent);
         this.cost = cost;
         this.mileage = mileage;
         this.comment = comment;
@@ -32,6 +32,26 @@ public class Event {
         this.volume = volume;
         this.typeDetail = typeDetail;
         this.costDetail = costDetail;
+    }
+
+    public Event(String nameEvent,  String typeDetail,float cost, long mileage, String comment, String dateEvent, float costDetail) {
+        setTypeEvent(nameEvent);
+        this.cost = cost;
+        this.mileage = mileage;
+        this.comment = comment;
+        this.dateEvent = dateEvent;
+        this.typeDetail = typeDetail;
+        this.costDetail = costDetail;
+    }
+
+    public Event(String nameEvent, float cost, long mileage, String comment, String dateEvent, String typeFuel, int volume) {
+        setTypeEvent(nameEvent);
+        this.cost = cost;
+        this.mileage = mileage;
+        this.comment = comment;
+        this.dateEvent = dateEvent;
+        this.typeFuel = typeFuel;
+        this.volume = volume;
     }
 
     public void setTypeEvent(String nameEvent) {

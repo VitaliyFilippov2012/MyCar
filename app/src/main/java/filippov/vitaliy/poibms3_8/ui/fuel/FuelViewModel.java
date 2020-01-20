@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 
 public class FuelViewModel extends ViewModel {
@@ -13,10 +14,15 @@ public class FuelViewModel extends ViewModel {
 
     public FuelViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue(new Event[]{new Event("Fuel",1300000,"23.02.2000")});
     }
 
-    public LiveData<Event[]> getText(Context context) {
+    public LiveData<Event[]> getText() {
+        Event[] e = CalendarEvents.getEventByCategory("Fuel").toArray(new Event[]{});
+        mText.setValue(e);
         return mText;
+    }
+
+    public void AddEvent(Event event){
+        CalendarEvents.addEvent(event,true);
     }
 }

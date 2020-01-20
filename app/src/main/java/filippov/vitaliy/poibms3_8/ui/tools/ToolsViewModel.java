@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import filippov.vitaliy.poibms3_8.Data.Events.CalendarEvents;
 import filippov.vitaliy.poibms3_8.Data.Events.Event;
 import filippov.vitaliy.poibms3_8.R;
 
@@ -15,10 +16,11 @@ public class ToolsViewModel extends ViewModel {
 
     public ToolsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue(new Event[]{new Event("Мойка",1300000,"23.02.2000"),new Event("Сервис",1300000,"23.02.2000")});
     }
 
     public LiveData<Event[]> getText(Context context) {
+        Event[] e = CalendarEvents.getEvents().toArray(new Event[]{});
+        mText.setValue(e);
         return mText;
     }
 }
